@@ -1,6 +1,7 @@
 class calcController{
     constructor(){
 
+        this._locale = "pt-br";
         this._displayCalcEl = document.querySelector("#display");
         this._dateEl = document.querySelector("#data");
         this._timeEl = document.querySelector("#hora");
@@ -12,9 +13,16 @@ class calcController{
 
     init(){
     
-       setInterval(()=> { //vai fazer um intervalo de atualizção da pagina
-            this.displayDate = this.currentDate.toLocaleDateString("pt-br");
-       }, 1000);
+        let interval = setInterval(()=> { //vai fazer um intervalo de atualizção da pagina
+       
+            this.displayDate = this.currentDate.toLocaleDateString(this._locale); //vai colocar a data atualizada no formado do Brasil na new Date.
+            this.displayTime = this.currentDate.toLocaleTimeString(this._locale); //vai atualizar a hora
+       
+        }, 1000);
+/*
+        setTimeout(() => {
+            clearInterval(interval); //vai conometrar a parada de atualizacao de pagina do setInterval
+        }, 12000); */
     }
 
     get displayTime(){
