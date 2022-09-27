@@ -12,17 +12,26 @@ class calcController{
     }
 
     init(){
+
+        this.setDisplayDateTime();
     
-        let interval = setInterval(()=> { //vai fazer um intervalo de atualizção da pagina
+         setInterval(()=> { //vai fazer um intervalo de atualizção da pagina
        
-            this.displayDate = this.currentDate.toLocaleDateString(this._locale); //vai colocar a data atualizada no formado do Brasil na new Date.
-            this.displayTime = this.currentDate.toLocaleTimeString(this._locale); //vai atualizar a hora
+            this.setDisplayDateTime();
        
         }, 1000);
-/*
+        
+        /*  <-- teste do setTime com o clearInterval -->
         setTimeout(() => {
             clearInterval(interval); //vai conometrar a parada de atualizacao de pagina do setInterval
         }, 12000); */
+    }
+
+    setDisplayDateTime(){
+       
+        this.displayDate = this.currentDate.toLocaleDateString(this._locale); //vai colocar a data atualizada no formado do Brasil na new Date.
+        this.displayTime = this.currentDate.toLocaleTimeString(this._locale); //vai atualizar a hora
+    
     }
 
     get displayTime(){
