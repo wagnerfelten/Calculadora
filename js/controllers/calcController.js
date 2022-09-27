@@ -1,22 +1,34 @@
 class calcController{
     constructor(){
-        this._displayCalc = "0";
-        this._dataAtual;
+
+        this._displayCalcEl = document.querySelector("#display");
+        this._dateEl = document.querySelector("#data");
+        this._timeEl = document.querySelector("#hora");
+
+        
+        this._currentDate;
+        this.init();
+    }
+
+    init(){
+    
+        dateEl.innerHTML = "01/05/2022";
+        timeEl.innerHTML = "4567";
     }
 
     get displayCalc(){
-        return this._displayCalc;
+        return this._displayCalcEl.innerHTML;
     }
 
-    set displayCalc(valor){
-        this.displayCalc = valor;
+    set displayCalc(value){
+        this._displayCalcEl.innerHTML = value;
     }
 
-    get dataAtual(){
-        return this._dataAtual;
+    get currentDate(){
+        return this._currentDate;
     }
 
-    set dataAtual(date){
-        this._dataAtual = date;
+    set currentDate(date){
+        this._currentDate = date;
     }
 }
