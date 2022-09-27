@@ -33,7 +33,7 @@ class calcController{
             {
                 //personalizacao da data com json
                 day: "2-digit",
-                month: "long",
+                month: "short",
                 year: "numeric"
             }); //vai colocar a data atualizada no formado do Brasil na new Date.
         this.displayTime = this.currentDate.toLocaleTimeString(this._locale); //vai atualizar a hora
