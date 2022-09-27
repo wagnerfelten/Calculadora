@@ -12,8 +12,25 @@ class calcController{
 
     init(){
     
-        dateEl.innerHTML = "01/05/2022";
-        timeEl.innerHTML = "4567";
+       setInterval(()=> { //vai fazer um intervalo de atualizção da pagina
+            this.displayDate = this.currentDate.toLocaleDateString("pt-br");
+       }, 1000);
+    }
+
+    get displayTime(){
+        return this._timeEl.innerHTML;
+    }
+
+    set displayTime(value){
+        return this._timeEl.innerHTML = value;
+    }
+
+    get displayDate(){
+        return this._dateEl.innerHTML;
+    }
+
+    set displayDate(value){
+        return this._dateEl.innerHTML = value;
     }
 
     get displayCalc(){
@@ -24,11 +41,11 @@ class calcController{
         this._displayCalcEl.innerHTML = value;
     }
 
-    get currentDate(){
-        return this._currentDate;
+    get currentDate( ){
+        return new Date();
     }
 
-    set currentDate(date){
-        this._currentDate = date;
+    set currentDate(value){
+        this._currentDate = value;
     }
 }
