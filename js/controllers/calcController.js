@@ -63,6 +63,25 @@ class calcController{
     
     }
 
+    pushOperation(value){
+        this._operation.push(value);
+
+        if(this._operation.length > 3){
+
+            this.calc();
+        }
+    }
+
+    calc(){
+        
+        let last = this._operation.pop();
+            
+        let result = eval(this._operation.join(""));
+
+        this._operation = [result, last];
+
+    }
+
     addOperation(value){
 
         if(isNaN(this.getLastOperation())){
@@ -72,19 +91,24 @@ class calcController{
                 this.setLastOperation(value);
             
             }else if(isNaN(value)){
-                console.log(value)
+                console.log("outracois" + value)
 
             }else{
-                this._operation.push(value);
+                this.pushOperation(value);
             }
 
         }else{
+
+            if(this.isOperation(value)){
+
+                this.pushOperation(value);
+
+            }else{
             let newValue = this.getLastOperation().toString() + value.toString(); //vai tranformar o numero em String e conctenar os numeros em forma de string
             
             this.setLastOperation(parseInt(newValue));
+            }
         }
-
-        
 
         console.log(this._operation);
     }
