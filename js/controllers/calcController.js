@@ -1,8 +1,8 @@
 class calcController{
     constructor(){
 
-        this._lastOperator = "";
-        this._lastNumber = "";
+        this._lastOperator = '';
+        this._lastNumber = '';
 
         this._operation = [];
         this._locale = "pt-br";
@@ -97,12 +97,13 @@ class calcController{
 
             this._lastNumber = this.getResult();
 
-        }
-
-        if(this._operation.length == 3){
+        }else if(this._operation.length == 3){
             
             this._lastNumber = this.getLastItem(false);
         }
+
+        console.log("lasopertator", this._lastOperator);
+        console.log("lasNumber", this._lastNumber);
 
         let result = this.getResult();
 
@@ -124,7 +125,7 @@ class calcController{
     getLastItem(isOperator  = true){
         let lastItem;
 
-        for(let item = this.isOperation.length - 1; item >= 0; item--){
+        for(let item = this._operation.length - 1; item >= 0; item--){
             
              if(this.isOperation(this._operation[item]) == isOperator){
                     lastItem = this._operation[item];
