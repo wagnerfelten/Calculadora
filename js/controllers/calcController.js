@@ -90,6 +90,11 @@ class calcController{
         let last = '';
 
         this._lastOperator = this.getLastItem();
+
+        if(this._operation.length < 3){
+            let firstItem = this._operation[0];
+            this._operation = [firstItem, this._lastOperator, this._lastNumber];
+        }
         
         if(this._operation.length > 3){
         
@@ -102,8 +107,8 @@ class calcController{
             this._lastNumber = this.getLastItem(false);
         }
 
-        console.log("lasopertator", this._lastOperator);
-        console.log("lasNumber", this._lastNumber);
+        console.log("lastOpertator", this._lastOperator);
+        console.log("lastNumber", this._lastNumber);
 
         let result = this.getResult();
 
@@ -132,6 +137,10 @@ class calcController{
                 break;
             
         }
+    }
+
+    if(!lastItem){
+        lastItem = (isOperator) ? this._lastOperator : this._lastNumber;
     }
         return lastItem;
     }
