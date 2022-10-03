@@ -196,6 +196,8 @@ class calcController{
     addDot(){
         let lastOperation = this.getLastOperation();
 
+        if(lastOperation && lastOperation.split('').indexOf('.') > -1)return;
+
         if(this.isOperation(lastOperation) || !lastOperation){
             this.pushOperation("0.");
         }else{
