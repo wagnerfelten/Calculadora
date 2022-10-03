@@ -44,7 +44,8 @@ class calcController{
 
     clearAll(){
         this._operation = [];
-
+        this._lastOperator = '';
+        this._lastNumber = '';
         this.setLastNumberToDisplay();
     }
 
@@ -179,7 +180,7 @@ class calcController{
             }else{
             let newValue = this.getLastOperation().toString() + value.toString(); //vai tranformar o numero em String e conctenar os numeros em forma de string
             
-            this.setLastOperation(parseInt(newValue));
+            this.setLastOperation(newValue);
 
             this.setLastNumberToDisplay();
             }
@@ -190,6 +191,16 @@ class calcController{
 
     setError(){
         this.displayCalc = "ERROR"
+    }
+
+    addDot(){
+        let lastOperation = this.getLastOperation();
+
+        if(this.isOperation(lastOperation) || !lastOperation){
+            this.pushOperation("0.");
+        }else{
+            this.setLastOperation(lastOperation.toString() + ".");
+        }
     }
 
     execBtn(value){
@@ -227,7 +238,7 @@ class calcController{
                 break;
             
             case 'ponto':
-                this.addOperation('.');
+                this.addDot();
                 break;
             
             case '0':
