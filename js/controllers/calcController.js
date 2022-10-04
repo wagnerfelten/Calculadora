@@ -17,7 +17,7 @@ class calcController{
         this.initKeyBoard();
         
     }
-
+/*
     copyToClipBoard(){
         let input = document.createElement('input');
         input.value = this.displayCalc;
@@ -27,7 +27,7 @@ class calcController{
 
         input.remove();
     }
-
+*/
     init(){
 
         this.setDisplayDateTime();
