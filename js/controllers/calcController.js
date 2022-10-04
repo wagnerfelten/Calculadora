@@ -14,7 +14,18 @@ class calcController{
         this._currentDate;
         this.init();
         this.initButtonsEvents();
+        this.initKeyBoard();
         
+    }
+
+    copyToClipBoard(){
+        let input = document.createElement('input');
+        input.value = this.displayCalc;
+        document.body.appendChild(input);
+        input.select();
+        document.execCommand('Copy');
+
+        input.remove();
     }
 
     init(){
@@ -33,6 +44,69 @@ class calcController{
         setTimeout(() => {
             clearInterval(interval); //vai conometrar a parada de atualizacao de pagina do setInterval
         }, 12000); */
+    }
+
+    initKeyBoard(){ //vai pegar os eventos do teclado 
+        document.addEventListener('keyuo', e =>{
+            switch(e.key){
+                case 'Escape':
+                        this.clearAll();
+                    break;
+    
+                case 'Backspace':
+                        this.clearEntry();
+                    break;
+    
+                case '+':
+                    this.addOperation('+');
+                    break;
+                       
+                case '-':
+                    this.addOperation('-');
+                    break;
+    
+                case '*':
+                    this.addOperation('*');
+                    break;
+                
+                case '/':
+                    this.addOperation('/');
+                    break;
+    
+                case '%':
+                    this.addOperation('%');
+                    break;
+    
+                case 'Enter':
+                case '=':
+                        this.calc();
+                    break;
+                
+                case '.':
+                case ',':
+                    this.addDot();
+                    break;
+                
+                case '0':
+                case '1':            
+                case '2':
+                case '3':                    
+                case '4':
+                case '5':                            
+                case '6':
+                case '7':                                    
+                case '8':
+                case '9':
+                        this.addOperation(parseInt(e.key));                                            
+                    break;
+
+                case 'c':
+                    if(e.ctrlkey) this.copyToClipBoard();
+                    break;
+                 
+            }
+        
+        });
     }
 
     addEventListenerAll(element, events, fn){
@@ -317,6 +391,12 @@ class calcController{
     }
 
     set displayCalc(value){
+
+        if(value.toString().length > 10){
+            this.setError();
+            return false;
+        }
+
         this._displayCalcEl.innerHTML = value;
     }
 
